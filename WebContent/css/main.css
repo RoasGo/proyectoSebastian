@@ -1,0 +1,640 @@
+@charset "ISO-8859-1";
+/*Estilos GENERALES*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+	overflow: hidden;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f6f5f7;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+span {
+    font-size: 12px;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    line-height: 20px;
+    margin: 20px 0 30px;
+}
+
+a, .link {
+    color: #333333;
+    text-decoration: none;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.verde {
+	color: #71E81F!important;
+}
+
+.rojo {
+	color: #B00C1B!important;
+}
+
+.boton {
+    border-radius: 20px;
+    border: 1px solid rgba(11, 16, 35, 1);
+    background-color: rgba(11, 16, 35, 1);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+.boton:hover {
+	background-color: transparent;
+	color: rgba(43, 55, 96, 1);
+}
+
+.boton:active {
+    transform: scale(0.95);
+}
+
+.boton:focus {
+    outline: none;
+}
+
+.tittle {
+    font-size: 64px;
+    transform: translateY(-40%);
+    color: #fff;
+}
+
+.boton.ghost {
+    background-color: transparent;
+    border-color: #ffffff;
+}
+
+.boton.ghost:hover {
+    background-color: #e5e5e5;
+    color: rgba(43, 55, 96, 1);
+}
+
+table {
+	padding: 0!important;
+	height: auto!important;
+}
+
+.select {
+	margin: 2px 0;
+    padding: 12px 5px;
+    background-color: #eeeeee;
+    border-radius: 10px;
+    border: none;
+    color: #6B6B6B;
+    width: 100%;
+}
+
+
+/*Acá comienza el cuadro*/
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/*Todo aplica a ambos contenidos (izq y derecha)*/
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.form-container .formulario .inputs {
+    padding: 12px 15px;
+    width: 100%;
+    background-color: #eeeeee;
+    border: none;
+    margin: 8px 0;
+}
+
+.form-container .formulario {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 50px;
+}
+
+.social-container {
+    margin: 20px 0;
+}
+
+.social-container a {
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    display: inline-flex;
+    height: 40px;
+    width: 40px;
+    margin: 0 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*Solo izquierda*/
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    z-index: 1;
+    opacity: 0;
+}
+
+
+/*Solo derecha*/
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+
+/*Acá comienza el overlay*/
+
+
+/*este es el padre (primera capa 50%) OJO: OVERFLOW*/
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+    overflow: hidden;
+}
+
+
+/*este es el primer hijo (segunda capa 100%)*/
+
+.overlay {
+    background: rgba(43, 55, 96, 1);
+    background: linear-gradient(to right, rgba(43, 55, 96, 1), rgba(11, 16, 35, 1));
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+
+/*este es el segundo hijo (tercera capa 50%)*/
+
+.overlay-panel {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    padding: 0 40px;
+    text-align: center;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+    overflow: hidden;
+}
+
+
+/*Estos son los contenidos (derecha, izq)*/
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+
+/*ANIMATIONS*/
+
+
+/*Mover el sign in a la derecha*/
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+
+/*Mover el contenedor overlay a la izquierda*/
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+
+/*Mostrar el sign up en la derecha*/
+
+.container.right-panel-active .sign-up-container {
+    opacity: 1;
+    z-index: 3;
+    transform: translateX(100%);
+}
+
+
+/*Mover solo el overlay a la derecha*/
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+
+/*Efecto para el contenido del overlay izquierdo*/
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+
+/*Efecto para el contenido del overlay derecho*/
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+
+/*    E S T A   E S   L A   P A G I N A   P R I N C I P A L    */
+
+.relativa {
+	position: relative;
+}
+.slider {
+	height: 100vh;
+	width: 100%;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90vh;
+	width: 100%;
+	z-index: 10;
+	flex-direction: column;
+}
+
+.contenido-main {
+	display: flex;
+	width: 80%;
+	height: 100%;
+	background-color: rgba(43, 55, 96, 1);
+	z-index: 20;
+	border: 2px solid rgba(11, 16, 35, 1);
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+@media (max-width: 1440px) {
+	.contenido-main {
+		width: 95%;
+	}
+}
+
+.contenido-izquierda {
+	display: flex;
+	flex-direction: column;
+	width: 20%;
+	height: 100%;
+	border-right: 2px solid rgba(11, 16, 35, 1);
+}
+
+@media (max-width: 1024px) {
+	.contenido-izquierda {
+		width: 22%;
+	}
+}
+
+.contenido-izquierda .titulo-contenido {
+	padding: 40px 30px;
+	color: rgba(11, 16, 35, 1);
+	cursor: pointer;
+}
+
+.titulo-contenido > h3 {
+	font-size: 32px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+@media (max-width: 1440px) {
+	.titulo-contenido > h3 {
+		font-size: 28px;
+	}
+}
+
+h3.start {
+	text-align: left;
+}
+
+h3.end {
+	text-align: right;
+}
+
+.contenido-izquierda .lista-opciones {
+	list-style: none;
+}
+
+.lista-opciones > li {
+	padding: 30px;
+	text-align: center;
+	cursor: pointer;
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #fff;
+	transition: all 0.2s ease;
+	user-select: none;
+}
+
+@media (max-width: 1440px) {
+	.lista-opciones > li {
+		font-size: 14px;
+	}
+}
+
+.lista-opciones > li:hover {
+	background-color: rgba(11, 16, 35, 1);
+}
+
+li.active {
+	background-color: rgba(11, 16, 35, 1);
+}
+
+/* E S T A   E S   L A   P A R T E   D E R E C H A    D E L    C O N T E N I D O    M A I N */
+
+.contenido-derecha {
+	display: flex;
+	width: 80%;
+	height: 100%;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	background-color: rgba(11, 16, 35, 1);
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+	.contenido-derecha {
+		width: 78%;
+	}
+}
+
+.contenido-derecha .seccion-1 {
+	display: none;
+	flex-direction: column;
+}
+
+.contenido-derecha .seccion-1 > h2 {
+	color: #fff;
+	font-size: 32px;
+	text-align: center;
+}
+
+/*     C O N T E N I D O   U S U A R I O S     */
+
+.contenido-derecha .contenido-usuarios, .contenido-derecha .contenido-libros,
+.contenido-derecha .contenido-reservaciones, .contenido-derecha .contenido-reportes {
+	max-height: 90%;
+	width: 90%;
+	background-color: #F2F2F2;
+	padding: 25px;
+	flex: 1;
+	display: none;
+}
+
+.actual {
+	display: flex!important;
+}
+
+.contenido-usuarios, .contenido-libros, .contenido-reservaciones, .contenido-reportes {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.buscador {
+	height: 10%;
+	width: 50%;
+	margin: 25px 0;
+}
+
+.buscador form {
+	height: 100%;
+	position: relative;
+}
+
+.buscador form table tbody {
+	display: flex;
+	align-items: center;
+}
+
+.buscador form table tbody tr:first-child {
+	flex-grow: 1;
+}
+
+.buscador form table tbody tr td {
+	display: block;
+}
+
+.buscador form table, .acciones form table{
+	width: 100%;
+}
+
+.buscador form .input {
+	padding: 18px;
+    width: 100%;
+    background-color: #e5e5e5;
+    border: none;
+    margin: 8px 0;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.buscador > form .input:focus {
+	outline: none;
+}
+
+.btn-buscador {
+	position: absolute;
+	top: 15%;
+    right: 20px;
+    width: 25px;
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.btn-buscador:focus {
+	outline: none;
+}
+
+i.fas.fa-search {
+	margin-left: 10px;
+}
+
+.mantenimiento {
+	height: 80%;
+	width: 95%;
+	display: flex;
+	justify-content: space-around;
+	position: relative;
+}
+
+.mantenimiento .listado {
+	flex: 0 0 calc(80%);
+	font-size: 18px;
+	border-collapse: collapse;
+	overflow-y: scroll;
+    display: block;
+}
+
+.listado thead tr th, .listado tbody tr td {
+	padding: 15px;
+	text-align: left;
+}
+
+.listado tbody tr:nth-child(odd) {
+	background-color: #fff;
+}
+
+@media (max-width: 1300px) {
+	.listado thead tr th, .listado tbody tr td {
+		font-size: 14px;
+	}	
+}
+
+
+.mantenimiento .acciones {
+	flex: 0 0 calc(25%);
+	text-align: center;
+	position: relative;
+}
+
+.mantenimiento .acciones > .accion-boton {
+	margin: 62px 0 1rem 0;
+}
+
+.mantenimiento .acciones > .accion-boton a{
+	display: inline-block;
+    margin: 0 0 15px 0;
+}
+
+.mantenimiento .acciones > .accion-boton.absolute {
+	position: absolute;
+	top: 60%;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.accion-boton.absolute > a {
+	background-color: rgba(43, 55, 96, 1);
+	border-color: rgba(43, 55, 96, 1);	
+}
+
+.accion-boton.absolute > a:hover {
+	background-color: transparent;
+	color: rgba(43, 55, 96, 1);
+}
+
+
+.boton.min-width {
+	min-width: 160px;
+}
+
+i.far.fa-edit, i.fas.fa-trash, i.fas.fa-search {
+	font-size: 18px;
+}
+
+i.far.fa-edit, i.fas.fa-trash, i.fas.fa-search:hover {
+	color: rgba(43, 55, 96, 1);
+}
+
+/*   E S T A    E S    L A    P A G I N A    D E    R E P O R T E S   */
+
+.contenido-reportes .reportes-acciones {
+	flex: 0 0 calc(70%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*   ESTE ES EL FORMULARIO PRINCIPAL   */
+
+.form-container.principal {
+	position: relative;
+	height: auto;
+}
+
+.form-container.principal .formulario {
+	padding: 0;
+	height: auto;
+	background-color: transparent;
+}
+
+.form-container .formulario tr td > div[align = "right"] {
+	text-align: center!important;
+}
+
+.form-container.principal .formulario.ocultado {
+	display: none;
+}
