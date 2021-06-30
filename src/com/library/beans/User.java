@@ -6,10 +6,11 @@ public class User {
 
 	private int id;
 	private String name;
-	private String lastName;
 	private String dni;
 	private String phone;
 	private String email;
+	private String password;
+	private int rolId;
 
 	public int getId() {
 		return id;
@@ -25,14 +26,6 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public String getDni() {
@@ -57,6 +50,22 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public int getRolId() {
+		return rolId;
+	}
+
+	public void setRolId(int rolId) {
+		this.rolId = rolId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
