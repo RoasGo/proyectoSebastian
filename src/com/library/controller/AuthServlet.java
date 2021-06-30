@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.library.beans.User;
+import com.library.service.AuthService;
+
 /**
  * Servlet implementation class AuthServlet
  */
@@ -19,14 +22,14 @@ public class AuthServlet extends HttpServlet {
      */
     public AuthServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -34,8 +37,22 @@ public class AuthServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		User user = new User();
+		user.setPassword(password);
+		user.setName(name);
+		user.setEmail(email);
+		User userCreated = new AuthService().createUser(user);
+		
+		if (userCreated != null) {
+			System.out.println(userCreated.getEmail());
+		} else {
+			System.out.println("Error por hacerlo todo apurado");
+		}
 	}
 
 }

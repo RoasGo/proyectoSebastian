@@ -47,7 +47,9 @@ DELIMITER $$
 create procedure createUser(IN name varchar(50), IN email varchar(70), IN password varchar(50))
 begin
 
-	insert into users(id, name, email, password) values(null, name, email, password);
+	insert into users(id, name, email, password, rolId) values(null, name, email, password, 1);
 
 end$$
 DELIMITER ;
+
+drop procedure createUser;

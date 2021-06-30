@@ -17,7 +17,7 @@
 		
 		<div class="form-container sign-up-container">
 		
-			<form action="registrar" class="formulario" method="post">
+			<form action="auth" class="formulario" method="post">
 				<h1>Crear Cuenta</h1>
 				
 				<div class="social-container">
@@ -31,7 +31,7 @@
 				<input class="inputs" name="password" type="password" placeholder="Ingresa tu password" />
 				<input class="boton" value="Registrate" type="submit" />
 			</form>
-		
+
 		</div>
 		
 		<div class="form-container sign-in-container">
