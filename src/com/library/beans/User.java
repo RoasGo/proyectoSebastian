@@ -11,6 +11,15 @@ public class User {
 	private String email;
 	private String password;
 	private int rolId;
+	private String rolName;
+
+	public String getRolName() {
+		return rolName;
+	}
+
+	public void setRolName(String rolName) {
+		this.rolName = rolName;
+	}
 
 	public int getId() {
 		return id;
@@ -66,6 +75,21 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public User(int id, String name, String dni, String phone, String email, String password, int rolId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dni = dni;
+		this.phone = phone;
+		this.email = email;
+		this.password = password;
+		this.rolId = rolId;
+	}
+
+	public User() {
+		super();
 	}
 
 }

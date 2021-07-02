@@ -71,7 +71,50 @@ public class AuthDAO implements IAuthDAO {
 	@Override
 	public User authenticate(String email, String password) {
 
-		return null;
+		Connection connection = null;
+		CallableStatement statement = null;
+		ResultSet resultSet = null;
+		User user = null;
+		
+		try {
+			
+			connection = MySqlConexion.getConection();
+			String sql = "{CALL authenticate(?,?)}";
+			statement = connection.prepareCall(sql);
+			statement.setString(1, email);
+			statement.setString(2, password);
+	
+			resultSet = statement.executeQuery();
+			
+			if (resultSet.next()) {
+				user = new User();
+				user.setId(resultSet.getInt(1));
+				user.setName(resultSet.getString(2));
+				user.setEmail(resultSet.getString(3));
+				user.setPassword(resultSet.getString(4));
+				user.setRolId(resultSet.getInt(6));
+				user.setRolName(resultSet.getString(7));
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch(Exception ex) {
+				System.out.println(ex.getMessage());
+			}			
+		}
+		
+		return user;
 	}
 
 }

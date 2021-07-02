@@ -12,4 +12,7 @@ public class AuthService {
 		return authDAO.createUser(user);
 	}
 	
+	public User login(String email, String password) {
+		return authDAO.authenticate(email, password);
+	}
 }
