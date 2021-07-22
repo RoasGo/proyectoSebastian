@@ -3,7 +3,6 @@ package com.library.dao.mysql;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import com.library.beans.User;
 import com.library.interfaces.IAuthDAO;

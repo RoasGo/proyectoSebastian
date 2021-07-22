@@ -46,11 +46,11 @@ public class AuthLoginServlet extends HttpServlet {
 		User user = new AuthService().login(email, password);
 		
 		if (user != null) {
-			System.out.println(user.getRolName());
-			System.out.println(user.getEmail());
+			request.getRequestDispatcher("/principal.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 		
-		// REQUEST DISPATCHER PARA REDIRIGIR A LAS PAGINAS CORRESPONDIENTES
 	}
 
 }

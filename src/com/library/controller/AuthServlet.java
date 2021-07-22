@@ -49,9 +49,9 @@ public class AuthServlet extends HttpServlet {
 		User userCreated = new AuthService().createUser(user);
 		
 		if (userCreated != null) {
-			System.out.println(userCreated.getEmail());
+			request.getRequestDispatcher("/principal.jsp").forward(request, response);
 		} else {
-			System.out.println("Error por hacerlo todo apurado");
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 
