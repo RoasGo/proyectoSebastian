@@ -2,7 +2,9 @@ package com.library.dao.mysql;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.library.beans.User;
 import com.library.interfaces.IAuthDAO;
@@ -114,6 +116,51 @@ public class AuthDAO implements IAuthDAO {
 		}
 		
 		return user;
+	}
+
+	@Override
+	public ArrayList<User> getUsers() {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		ArrayList<User> listado = new ArrayList<User>();
+		
+		try {
+			
+			connection = MySqlConexion.getConection();
+			String sql = "select * from users";
+			statement = connection.prepareCall(sql);
+	
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				User user = new User();
+				user.setId(resultSet.getInt(1));
+				user.setName(resultSet.getString(2));
+				user.setEmail(resultSet.getString(3));
+				user.setRolId(resultSet.getInt(6));
+				listado.add(user);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch(Exception ex) {
+				System.out.println(ex.getMessage());
+			}			
+		}
+		
+		return listado;
 	}
 
 }

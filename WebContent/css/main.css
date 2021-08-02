@@ -325,7 +325,7 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 90vh;
+	height: 95vh;
 	width: 100%;
 	z-index: 10;
 	flex-direction: column;
@@ -333,7 +333,7 @@ main {
 
 .contenido-main {
 	display: flex;
-	width: 80%;
+	width: 95%;
 	height: 100%;
 	background-color: rgba(43, 55, 96, 1);
 	z-index: 20;
@@ -363,7 +363,7 @@ main {
 }
 
 .contenido-izquierda .titulo-contenido {
-	padding: 40px 30px;
+	padding: 40px 30px 15px 30px;
 	color: rgba(11, 16, 35, 1);
 	cursor: pointer;
 }
@@ -393,7 +393,7 @@ h3.end {
 }
 
 .lista-opciones > li {
-	padding: 30px;
+	padding: 25px 30px;
 	text-align: center;
 	cursor: pointer;
 	font-size: 18px;
@@ -541,7 +541,7 @@ i.fas.fa-search {
 }
 
 .mantenimiento .listado {
-	flex: 0 0 calc(80%);
+	flex: 0 0 calc(90%);
 	font-size: 18px;
 	border-collapse: collapse;
 	overflow-y: scroll;

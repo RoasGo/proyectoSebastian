@@ -12,7 +12,7 @@ if (slider) {
 
 	if (screen.width > 1440) {
 		tl.fromTo(hero, 1, { height: "0%" }, { height: "100%", ease: Power2.easeInOut })
-			.fromTo(hero, 1.2, { width: "100%" }, { width: "80%", ease: Power2.easeInOut })
+			.fromTo(hero, 1.2, { width: "100%" }, { width: "95%", ease: Power2.easeInOut })
 			.fromTo(slider, 1.2, { x: "0%" }, { x: "100%", ease: Power2.easeInOut }, "-=1.2")
 			.fromTo(links, 0.5, { opacity: "0", x: "-60" }, { opacity: "1", x: "0" }, "-=0.5")
 

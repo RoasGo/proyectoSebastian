@@ -1,5 +1,7 @@
 package com.library.service;
 
+import java.util.ArrayList;
+
 import com.library.beans.User;
 import com.library.factory.DAOFactory;
 import com.library.interfaces.IAuthDAO;
@@ -14,5 +16,9 @@ public class AuthService {
 	
 	public User login(String email, String password) {
 		return authDAO.authenticate(email, password);
+	}
+	
+	public ArrayList<User> getUsers() {
+		return authDAO.getUsers();
 	}
 }

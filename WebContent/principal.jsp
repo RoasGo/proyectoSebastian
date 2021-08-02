@@ -1,3 +1,6 @@
+<%@page import="com.library.service.AuthService"%>
+<%@page import="com.library.beans.User"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -50,15 +53,33 @@
 								</tr>
 							</thead>
 							<tbody id="columnas">
-								<tr>
-									<td>1</td>
-									<td>Gonzalo</td>
-									<td>roasgo@hotmail.com</td>
-									<td><a href="#"> <i class="far fa-edit"></i> </a></td>
-									<td><a href="#"> <i class="fas fa-trash"></i> </a></td>
-								</tr>
+								<%
+									ArrayList<User> listado = new AuthService().getUsers();
+									for (User user : listado) {
+										out.print("<tr>");
+										out.print("<td>"+user.getId()+"</td>");
+										out.print("<td>"+user.getName()+"</td>");
+										out.print("<td>"+user.getEmail()+"</td>");
+										out.print("<td><a href='#'> <i class='far fa-edit'></i> </a></td>");
+										out.print("<td><a href='#'> <i class='fas fa-trash'></i> </a></td>");
+										out.print("</tr>");
+									}
+								%>
 							</tbody>
 						</table>
+						<div class="acciones">
+							<div class="accion-boton" id="divAgregar">
+								<a class="boton" id="btnAgregar">Registrar</a>
+							</div>
+							<div class="form-container principal">
+								<form action="#" class="formulario ocultado" method="post" id="formAgregar">
+									<input class="inputs" name="name" type="text" placeholder="Ingresa tu nombre" />
+									<input class="inputs" name="email" type="email" placeholder="Ingresa tu email" />
+									<input class="inputs" name="password" type="password" placeholder="Ingresa tu password" />
+									<input class="boton" value="Agregar" type="submit" />
+								</form>
+							</div>
+						</div>
 					</div>
 					
 				</div>
