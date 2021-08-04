@@ -1,3 +1,5 @@
+<%@page import="com.library.beans.Rol"%>
+<%@page import="com.library.service.RolService"%>
 <%@page import="com.library.service.AuthService"%>
 <%@page import="com.library.beans.User"%>
 <%@page import="java.util.ArrayList"%>
@@ -37,7 +39,7 @@
 			
 			<div class="contenido-derecha">
 				
-				<div class="contenido-usuarios actual" id="usuarios">
+				<div class="contenido-usuarios" id="usuarios">
 					<h1>Mantenimiento de Usuarios</h1>
 					<div id="mensaje-error"></div>
 					
@@ -83,6 +85,42 @@
 					</div>
 					
 				</div>
+				
+				<div class="contenido-usuarios actual" id="usuarios">
+					<h1>Mantenimiento de Roles</h1>
+					<div id="mensaje-error"></div>
+					
+					<div class="mantenimiento">
+						<table class="listado">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Name</th>
+									<th></th>
+									<th></th>
+								
+									
+								</tr>
+							</thead>
+							<tbody id="columnas">
+								<%
+									ArrayList<Rol> listadoRoles = new RolService().getRoles();
+									for (Rol roles : listadoRoles) {
+										out.print("<tr>");
+										out.print("<td>"+roles.getId()+"</td>");
+										out.print("<td>"+roles.getName()+"</td>");
+										out.print("<td><a href='#'> <i class='far fa-edit'></i> </a></td>");
+										out.print("<td><a href='#'> <i class='fas fa-trash'></i> </a></td>");
+										out.print("</tr>");
+									}
+								%>
+							</tbody>
+						</table>
+						
+					</div>
+					
+				</div>
+				
 				
 			</div>
 		
