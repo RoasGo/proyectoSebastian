@@ -48,6 +48,7 @@ public class AuthLoginServlet extends HttpServlet {
 		if (user != null) {
 			request.getRequestDispatcher("/principal.jsp").forward(request, response);
 		} else {
+			request.setAttribute("msg","El nombre de usuario ya está en uso");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 		

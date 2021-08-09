@@ -17,7 +17,7 @@
 		
 		<div class="form-container sign-up-container">
 		
-			<form action="auth" class="formulario" method="post">
+			<form action="auth" class="formulario" method="post" id="authForm">
 				<h1>Crear Cuenta</h1>
 				
 				<div class="social-container">
@@ -26,9 +26,9 @@
 					<a href="#" class="social"> <i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<span>puedes usar tambien tu email para registrarte</span>
-				<input class="inputs" name="name" type="text" placeholder="Ingresa tu nombre" />
-				<input class="inputs" name="email" type="email" placeholder="Ingresa tu email" />
-				<input class="inputs" name="password" type="password" placeholder="Ingresa tu password" />
+				<input class="inputs" name="name" type="text" placeholder="Ingresa tu nombre" id="reg_name"/>
+				<input class="inputs" name="email" type="email" placeholder="Ingresa tu email" id="reg_email"/>
+				<input class="inputs" name="password" type="password" placeholder="Ingresa tu password" id="reg_pass" />
 				<input class="boton" value="Registrate" type="submit" />
 			</form>
 
@@ -45,8 +45,8 @@
 					<a href="#" class="social"> <i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<span>o usa tu cuenta...</span>
-				<input class="inputs" name="email" type="email" placeholder="Ingresa tu email" />
-				<input class="inputs" name="password" type="password" placeholder="Ingresa tu password" />
+				<input class="inputs" name="email" type="email" placeholder="Ingresa tu email" id="log_email" />
+				<input class="inputs" name="password" type="password" placeholder="Ingresa tu password" id="log_pass"/>
 				<a href="#" class="link">¿Olvidaste tu contraseña?</a>
 				<input class="boton" value="Inicia Sesión" type="submit" />
 			</form>
@@ -73,5 +73,7 @@
 	</div>
 
 	<script src="js/main.js"></script>
+	<script src="js/validations.js"></script>
+
 </body>
 </html>
