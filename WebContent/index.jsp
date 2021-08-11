@@ -29,7 +29,7 @@
 				<input class="inputs" name="name" type="text" placeholder="Ingresa tu nombre" id="reg_name"/>
 				<input class="inputs" name="email" type="email" placeholder="Ingresa tu email" id="reg_email"/>
 				<input class="inputs" name="password" type="password" placeholder="Ingresa tu password" id="reg_pass" />
-				<input class="boton" value="Registrate" type="submit" />
+				<input class="boton" value="Registrate" type="button" id="authButton" />
 			</form>
 
 		</div>
@@ -48,7 +48,7 @@
 				<input class="inputs" name="email" type="email" placeholder="Ingresa tu email" id="log_email" />
 				<input class="inputs" name="password" type="password" placeholder="Ingresa tu password" id="log_pass"/>
 				<a href="#" class="link">¿Olvidaste tu contraseña?</a>
-				<input class="boton" value="Inicia Sesión" type="submit" />
+				<input class="boton" value="Inicia Sesión" type="button" id="loginButton" />
 			</form>
 		
 		</div>
