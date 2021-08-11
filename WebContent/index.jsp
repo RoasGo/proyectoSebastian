@@ -36,7 +36,7 @@
 		
 		<div class="form-container sign-in-container">
 		
-			<form action="login" class="formulario" method="post">
+			<form action="login" class="formulario" method="post" >
 				<h1>Inicia sesion</h1>
 				
 				<div class="social-container">
