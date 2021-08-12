@@ -62,8 +62,8 @@
 										out.print("<td>"+user.getId()+"</td>");
 										out.print("<td>"+user.getName()+"</td>");
 										out.print("<td>"+user.getEmail()+"</td>");
-										out.print("<td><a href='#'> <i class='far fa-edit'></i> </a></td>");
-										out.print("<td><a href='#'> <i class='fas fa-trash'></i> </a></td>");
+										out.print("<td><a href=''> <i class='far fa-edit'></i> </a></td>");
+										out.print("<td><a href='user-delete?codigo="+ user.getId() + "'> <i class='fas fa-trash'></i> </a></td>");
 										out.print("</tr>");
 									}
 								%>
