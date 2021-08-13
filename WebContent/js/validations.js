@@ -4,9 +4,10 @@
 console.log('Cargó validations');
 const authForm = document.querySelector('#authForm');
 const authButton = document.querySelector('#authButton');
+const loginForm = document.querySelector('#loginForm');
+const loginButton = document.querySelector('#loginButton');
 
 function validateAuthForm(evento) {
-	console.log('entra validations');
 	evento.preventDefault();
 	const name = document.querySelector('#reg_name').value.trim();
 	const email = document.querySelector('#reg_email').value.trim();
@@ -18,22 +19,31 @@ function validateAuthForm(evento) {
 	if (!email.length) {
 		return alert('El campo email está vacío');
 	}
-
-	if (!email.length) {
-		console.log('Está vacío');
-		
-
 	if (!password.length) {
 		return alert('El campo password está vacío');
-
-	}
-	if(!password.length){
-		console.log('Está vacío');
 	}
 	
 	authForm.submit();
 }
+function validateloginForm(evento){
+	evento.preventDefault();
+	const email = document.querySelector('#log_email').value.trim();
+	const password = document.querySelector('#log_pass').value.trim();
+	
+	if (!email.length) {
+		return alert('El campo email está vacío');
+	}
+	if (!password.length) {
+		return alert('El campo password está vacío');
+	}
+	
+	autheauthForm.submit();
+}
 
 document.addEventListener("DOMContentLoaded", function() {
 	authButton.addEventListener('click', validateAuthForm);
+});
+
+document.addEventListener("DOMContentLoaded",function(){
+	loginButton.addEventListener('click', validateloginForm);
 });
