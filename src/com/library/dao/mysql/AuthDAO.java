@@ -172,7 +172,7 @@ public class AuthDAO implements IAuthDAO {
 
 			connection = MySqlConexion.getConection();
 
-			String sql = " delete from users where id = ?";
+			String sql = " delete from users where id = codigo";
 
 			statement = connection.prepareCall(sql);
 
