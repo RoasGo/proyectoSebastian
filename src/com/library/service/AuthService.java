@@ -21,7 +21,10 @@ public class AuthService {
 	public ArrayList<User> getUsers() {
 		return authDAO.getUsers();
 	}
-	public User deleteUser(User codigo) {
+	public int deleteUser(int codigo) {
 		return authDAO.deleteUser(codigo);
 	}
+	
+	public int deleteRoles(int codigo) {
+		return authDAO.deleteRoles(codigo);}
 }

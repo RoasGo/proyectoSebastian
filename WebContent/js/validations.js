@@ -37,13 +37,11 @@ function validateloginForm(evento){
 		return alert('El campo password está vacío');
 	}
 	
-	autheauthForm.submit();
+	loginForm.submit();
 }
 
 document.addEventListener("DOMContentLoaded", function() {
 	authButton.addEventListener('click', validateAuthForm);
-});
-
-document.addEventListener("DOMContentLoaded",function(){
 	loginButton.addEventListener('click', validateloginForm);
 });
+

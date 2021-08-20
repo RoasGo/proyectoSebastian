@@ -128,7 +128,7 @@ public class AuthDAO implements IAuthDAO {
 
 			connection = MySqlConexion.getConection();
 			String sql = "select * from users";
-			statement = connection.prepareCall(sql);
+			statement = connection.prepareStatement(sql);
 
 			resultSet = statement.executeQuery();
 
@@ -163,22 +163,20 @@ public class AuthDAO implements IAuthDAO {
 	}
 
 	@Override
-	public User deleteUser(User codigo) {
+	public int deleteUser(int codigo) {
 
 		Connection connection = null;
-		CallableStatement statement = null;
+		PreparedStatement statement = null;
 		int rs = 0;
 		try {
 
 			connection = MySqlConexion.getConection();
 
-			String sql = " delete from users where id = codigo";
+			String sql = " delete from users where id = ?";
 
-			statement = connection.prepareCall(sql);
+			statement = connection.prepareStatement(sql);
 
-			statement.setInt(1, codigo.getId());
-			statement.setString(2, codigo.getName());
-			statement.setString(3, codigo.getEmail());
+			statement.setInt(1, codigo);
 
 			rs = statement.executeUpdate();
 
@@ -197,7 +195,43 @@ public class AuthDAO implements IAuthDAO {
 			}
 		}
 
-		return codigo;
+		return rs;
+	}
+
+	@Override
+	public int deleteRoles(int codigo) {
+		Connection conecion = null;
+		PreparedStatement statement = null;
+		int rs = 0;
+		try {
+			conecion = MySqlConexion.getConection();
+			String sql = "delete from roles where id = ?";
+
+			statement = conecion.prepareStatement(sql);
+			
+			statement.setInt(1, codigo);
+
+			rs = statement.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (conecion != null) {
+					conecion.close();
+
+				}
+				if (statement != null) {
+					statement.close();
+
+				}
+			} catch (Exception e) {
+			System.out.println(e.getMessage());
+			}
+
+		}
+
+		return rs;
 	}
 
 }

@@ -39,7 +39,7 @@
 			
 			<div class="contenido-derecha">
 				
-				<div class="contenido-usuarios actual" id="usuarios">
+				<div class="contenido-usuarios " id="usuarios">
 					<h1>Mantenimiento de Usuarios</h1>
 					<div id="mensaje-error"></div>
 					
@@ -86,7 +86,7 @@
 					
 				</div>
 				
-				<div class="contenido-usuarios " id="usuarios">
+				<div class="contenido-usuarios actual " id="usuarios">
 					<h1>Mantenimiento de Roles</h1>
 					<div id="mensaje-error"></div>
 					
@@ -110,7 +110,7 @@
 										out.print("<td>"+roles.getId()+"</td>");
 										out.print("<td>"+roles.getName()+"</td>");
 										out.print("<td><a href='#'> <i class='far fa-edit'></i> </a></td>");
-										out.print("<td><a href='#'> <i class='fas fa-trash'></i> </a></td>");
+										out.print("<td><a href='RolesDeleteServlet?codigo="+ roles.getId() + "'> <i class='fas fa-trash'></i> </a></td>");
 										out.print("</tr>");
 									}
 								%>
